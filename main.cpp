@@ -137,12 +137,27 @@ void show_histogramm_svg(const vector<size_t>& bins)
     const auto RECT_STROKE = "red";
     const auto RECT_FILL = "#ffcccc";
 
+    size_t max_bin = bins[0];
+    for (size_t bin : bins)
+    {
+        if(bin > max_bin)
+        {
+            max_bin = bin;
+        }
+    }
+    auto max_bin_width = BLOCK_WIDTH * max_bin;
+    const auto MAX_BIN_WIDTH = IMAGE_WIDTH - TEXT_WIDTH;
+
     svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
 
     double top = 0;
     for(size_t bin : bins)
     {
-        const double bin_width = BLOCK_WIDTH * bin;
+        double bin_width = BLOCK_WIDTH * bin;
+        if(MAX_BIN_WIDTH < max_bin_width)
+        {
+            bin_width = static_cast<double>(bin_width) / max_bin_width * MAX_BIN_WIDTH;
+        }
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
         svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT, RECT_STROKE, RECT_FILL);
         top += BIN_HEIGHT;
