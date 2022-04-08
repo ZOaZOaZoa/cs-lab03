@@ -1,6 +1,33 @@
 #include "histogram.h"
 
+//Input check
+const auto MIN_IMAGE_WIDTH = 70;
+const auto MAX_IMAGE_WIDTH = 800;
+const auto MIN_NUMBERS_RATIO = 1/3;
+//Histogramm print
+//const auto IMAGE_WIDTH = 400;
+const auto IMAGE_HEIGHT = 300;
+const auto TEXT_LEFT = 20;
+const auto TEXT_BASELINE = 20;
+const auto TEXT_WIDTH = 50;
+const auto BIN_HEIGHT = 30;
+const auto BLOCK_WIDTH = 10;
+const auto RECT_STROKE = "red";
+const auto RECT_FILL = "#ffcccc";
+
 using namespace std;
+
+bool input_check_histogram_width(size_t width, size_t numbers_count)
+{
+    if( (MIN_IMAGE_WIDTH < width && width < MAX_IMAGE_WIDTH) && width > MIN_NUMBERS_RATIO * numbers_count * BLOCK_WIDTH)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 void find_minmax(const vector<double>& numbers, double& min, double& max)
 {
@@ -51,17 +78,8 @@ void svg_end()
     cout << "</svg>\n";
 }
 
-void show_histogramm_svg(const vector<size_t>& bins)
+void show_histogramm_svg(const vector<size_t>& bins, size_t image_width)
 {
-    const auto IMAGE_WIDTH = 400;
-    const auto IMAGE_HEIGHT = 300;
-    const auto TEXT_LEFT = 20;
-    const auto TEXT_BASELINE = 20;
-    const auto TEXT_WIDTH = 50;
-    const auto BIN_HEIGHT = 30;
-    const auto BLOCK_WIDTH = 10;
-    const auto RECT_STROKE = "red";
-    const auto RECT_FILL = "#ffcccc";
 
     size_t max_bin = bins[0];
     for (size_t bin : bins)
@@ -72,9 +90,9 @@ void show_histogramm_svg(const vector<size_t>& bins)
         }
     }
     auto max_bin_width = BLOCK_WIDTH * max_bin;
-    const auto MAX_BIN_WIDTH = IMAGE_WIDTH - TEXT_WIDTH;
+    const auto MAX_BIN_WIDTH = image_width - TEXT_WIDTH;
 
-    svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
+    svg_begin(image_width, IMAGE_HEIGHT);
 
     double top = 0;
     for(size_t bin : bins)

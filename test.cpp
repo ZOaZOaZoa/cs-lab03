@@ -2,6 +2,36 @@
 
 #include <cassert>
 
+//input_check_histogram_width(size_t width, size_t numbers_count)
+void test_normal()
+{
+    bool passed_test = false;
+    passed_test = input_check_histogram_width(400, 10);
+    assert(passed_test == true);
+}
+
+void test_small_width()
+{
+    bool passed_test = false;
+    passed_test = input_check_histogram_width(50, 15);
+    assert(passed_test == false);
+}
+
+void test_big_width()
+{
+    bool passed_test = false;
+    passed_test = input_check_histogram_width(1500, 60);
+    assert(passed_test == false);
+}
+
+void test_wrong_ratio()
+{
+    bool passed_test = false;
+    passed_test = input_check_histogram_width(200, 100);
+    assert(passed_test == false);
+}
+
+//find_minmax(const vector<double>& numbers, double& min, double& max)
 void test_positive()
 {
     double min = 0;
@@ -47,8 +77,15 @@ void test_empty()
     assert(max == 0);
 }
 
+
 int main()
 {
+    //input_check_histogram_width()
+    test_normal();
+    test_small_width();
+    test_big_width();
+
+    //find_minmax()
     test_positive();
     test_negative();
     test_equal();

@@ -103,12 +103,25 @@ int main()
     cerr << "Enter bin count: ";
     cin >> bin_count;
 
+    size_t image_width;
+    bool passed_test = false;
+    cerr << "Enter image width";
+    do
+    {
+        cin >> image_width;
+        passed_test = input_check_histogram_width(image_width, numbers.size());
+
+        if(!passed_test)
+        {
+            cerr << "Image width should be in range of 70 and 800 and be greater than 1/3 of numbers count multiplyed by 20\n";
+        }
+    } while(!passed_test);
 
     //Расчет гистограммы
     const auto bins = make_histogramm(numbers, bin_count);
 
     //Вывод гистограммы
-    show_histogramm_svg(bins);
+    show_histogramm_svg(bins, image_width);
 
     return 0;
 }

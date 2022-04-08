@@ -1,11 +1,13 @@
 # depslib dependency file v1.0
-1649056429 source:e:\mine data\projects\codeblocks\lab03\histogram.cpp
+1649059112 source:e:\mine data\projects\codeblocks\lab03\histogram.cpp
 	"histogram.h"
 
-1649056429 e:\mine data\projects\codeblocks\lab03\histogram.h
+1649058648 e:\mine data\projects\codeblocks\lab03\histogram.h
+	<iostream>
 	<vector>
+	<string>
 
-1649055702 source:e:\mine data\projects\codeblocks\lab03\test.cpp
+1649059049 source:e:\mine data\projects\codeblocks\lab03\test.cpp
 	"histogram.h"
 	<cassert>
 
