@@ -103,9 +103,11 @@ int main()
     cerr << "Enter bin count: ";
     cin >> bin_count;
 
-    size_t image_width;
+    const size_t MAX_TRIES = 100;
+    size_t try_counter = 0;
     bool passed_test = false;
-    cerr << "Enter image width";
+    size_t image_width;
+    cerr << "Enter image width: ";
     do
     {
         cin >> image_width;
@@ -115,7 +117,8 @@ int main()
         {
             cerr << "Image width should be in range of 70 and 800 and be greater than 1/3 of numbers count multiplyed by 20\n";
         }
-    } while(!passed_test);
+        try_counter++;
+    } while(!passed_test && try_counter < MAX_TRIES);
 
     //Расчет гистограммы
     const auto bins = make_histogramm(numbers, bin_count);

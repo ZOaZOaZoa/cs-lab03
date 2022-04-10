@@ -10,6 +10,20 @@ void test_normal()
     assert(passed_test == true);
 }
 
+void test_smallest()
+{
+    bool passed_test = false;
+    passed_test = input_check_histogram_width(70, 10);
+    assert(passed_test == true);
+}
+
+void test_biggest()
+{
+    bool passed_test = false;
+    passed_test = input_check_histogram_width(800, 10);
+    assert(passed_test == true);
+}
+
 void test_small_width()
 {
     bool passed_test = false;
@@ -82,6 +96,8 @@ int main()
 {
     //input_check_histogram_width()
     test_normal();
+    test_smallest();
+    test_biggest();
     test_small_width();
     test_big_width();
 
