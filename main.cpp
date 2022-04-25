@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "histogram.h"
+#include "svg.h"
 
 vector<double> input_numbers(size_t count)
 {
