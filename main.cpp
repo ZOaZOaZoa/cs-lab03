@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <istream>
+#include <curl/curl.h>
 #include "histogram.h"
 #include "svg.h"
 
@@ -45,14 +46,10 @@ Input read_input(istream& in, bool prompt)
 
 int main()
 {
-    //Ввод данных
-    Input data;
-    data = read_input(cin, 1);
+    curl_global_init(CURL_GLOBAL_ALL);
 
-    //Расчет гистограммы
+    const auto data = read_input(cin, 1);
     const auto bins = make_histogramm(data);
-
-    //Вывод гистограммы
     show_histogramm_svg(bins);
 
     return 0;
