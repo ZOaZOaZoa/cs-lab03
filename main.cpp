@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <istream>
+#include <sstream>
 #include <curl/curl.h>
 #include "histogram.h"
 #include "svg.h"
@@ -48,16 +49,18 @@ int main(int argc, char* argv[])
 {
     if(argc > 1)
     {
-        cout << "argc = " << argc << '\n';
-        for(size_t i = 0; i < argc; i++)
-        {
-            cout << "argv[" << i << "]= " << argv[i] << '\n';
+        curl_global_init(CURL_GLOBAL_ALL);
+        CURL *curl = curl_easy_init();
+        if(curl) {
+          CURLcode res;
+          curl_easy_setopt(curl, CURLOPT_URL, argv[1]);
+          res = curl_easy_perform(curl);
+          curl_easy_cleanup(curl);
         }
         return 0;
     }
 
 
-    curl_global_init(CURL_GLOBAL_ALL);
 
     const auto data = read_input(cin, 1);
     const auto bins = make_histogramm(data);

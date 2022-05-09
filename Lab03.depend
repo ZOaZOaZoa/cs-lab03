@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1650881779 source:e:\mine data\projects\codeblocks\lab03\main.cpp
+1652093651 source:e:\mine data\projects\codeblocks\lab03\main.cpp
 	<iostream>
 	<vector>
 	<istream>
+	<sstream>
 	<curl/curl.h>
 	"histogram.h"
 	"svg.h"
