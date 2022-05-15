@@ -112,6 +112,14 @@ Input download(const string& address)
 
 int main(int argc, char* argv[])
 {
+    const char* name = "Commander Shepard";
+    int year = 2154;
+    printf("%s was born in %d.\n", name, year);
+    // Commander Shepard was born in 2154.
+    printf("n = %010x\n", 0x1234567); // 01234567
+
+    return 0;
+
     Input input;
     if(argc > 1)
     {
