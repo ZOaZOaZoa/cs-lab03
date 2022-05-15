@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1652618965 source:e:\mine data\projects\codeblocks\lab03\main.cpp
+1652623051 source:e:\mine data\projects\codeblocks\lab03\main.cpp
 	<iostream>
 	<vector>
 	"histogram.h"
@@ -12,13 +12,13 @@
 	<curl/curl.h>
 	"svg.h"
 
-1652618870 source:e:\mine data\projects\codeblocks\lab03\histogram.cpp
+1652619231 source:e:\mine data\projects\codeblocks\lab03\histogram.cpp
 	"histogram.h"
 
 1652618870 source:e:\mine data\projects\codeblocks\lab03\svg.cpp
 	"svg.h"
 
-1652618934 e:\mine data\projects\codeblocks\lab03\svg.h
+1652623051 e:\mine data\projects\codeblocks\lab03\svg.h
 	<iostream>
 	<vector>
 	<string>

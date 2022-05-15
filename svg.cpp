@@ -26,6 +26,16 @@ string get_system_info()
     return result;
 }
 
+string get_computer_name()
+{
+    DWORD max_len = MAX_COMPUTERNAME_LENGTH + 1;
+    char computer_name[max_len];
+    GetComputerNameA(computer_name, &max_len);
+    string result = computer_name;
+
+    return result;
+}
+
 void svg_begin(double width, double height)
 {
     cout << "<?xml version = '1.0' encoding='UTF-8'?>\n";
@@ -83,7 +93,10 @@ void show_histogramm_svg(const vector<size_t>& bins, size_t image_width)
     }
 
     string system_info = get_system_info();
+    string computer_name = get_computer_name();
     svg_text(SYS_INFO_LEFT, BIN_HEIGHT * bins.size() + TEXT_BASELINE, system_info);
+    svg_text(SYS_INFO_LEFT, BIN_HEIGHT * bins.size() + 2 * TEXT_BASELINE, computer_name);
+
 
     svg_end();
 }
