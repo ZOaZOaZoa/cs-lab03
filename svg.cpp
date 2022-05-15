@@ -13,6 +13,29 @@ bool input_check_histogram_width(size_t width, size_t numbers_count)
     }
 }
 
+string get_system_info()
+{
+    string result;
+    const size_t MAX_LEN = 256;
+    char str_info[MAX_LEN];
+
+    DWORD info = GetVersion();
+    DWORD mask =0x0000ffff;
+    DWORD version = info & mask;
+    DWORD version_major = version & 0x00ff;
+    DWORD version_minor = version & 0xff00;
+    sprintf(str_info, "Windows v%u.%u", version_major, version_minor);
+    result = str_info;
+    if((info & 0x8000'0000) == 0)
+    {
+        DWORD build = info >> 16;
+        sprintf(str_info, " (build %u)\n", build);
+        result += str_info;
+    }
+
+    return result;
+}
+
 void svg_begin(double width, double height)
 {
     cout << "<?xml version = '1.0' encoding='UTF-8'?>\n";
@@ -68,6 +91,9 @@ void show_histogramm_svg(const vector<size_t>& bins, size_t image_width)
         svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT, RECT_STROKE, RECT_FILL);
         top += BIN_HEIGHT;
     }
+
+    string system_info = get_system_info();
+    svg_text(SYS_INFO_LEFT, BIN_HEIGHT * bins.size() + TEXT_BASELINE, system_info);
 
     svg_end();
 }

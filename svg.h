@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <windows.h>
 
 using namespace std;
 
@@ -20,8 +21,10 @@ using namespace std;
     const auto BLOCK_WIDTH = 10;
     const auto RECT_STROKE = "red";
     const auto RECT_FILL = "#ffcccc";
+    const auto SYS_INFO_LEFT = 20;
 
 bool input_check_histogram_width(size_t width, size_t numbers_count);
+string get_system_info();
 void svg_begin(double width, double height);
 void svg_text(double left, double baseline, string text);
 void svg_rect(double x, double y, double width, double height, string stroke = "black", string fill = "black");
