@@ -97,6 +97,12 @@ Input download(const string& address)
           cerr << "Error: " << curl_easy_strerror(res);
           exit(1);
       }
+      double total_time;
+      res = curl_easy_getinfo(curl, CURLINFO_TOTAL_TIME, &total_time);
+      if(res == CURLE_OK)
+      {
+          cerr << "Time spent: " << total_time << " seconds\n";
+      }
       curl_easy_cleanup(curl);
     }
 
