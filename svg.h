@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <winsock2.h>
 #include <windows.h>
 
 using namespace std;

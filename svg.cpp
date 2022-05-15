@@ -1,17 +1,7 @@
 #include "svg.h"
 
 
-bool input_check_histogram_width(size_t width, size_t numbers_count)
-{
-    if( (MIN_IMAGE_WIDTH <= width && width <= MAX_IMAGE_WIDTH) && width > MIN_NUMBERS_RATIO * numbers_count * BLOCK_WIDTH)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+
 
 string get_system_info()
 {

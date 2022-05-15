@@ -1,28 +1,28 @@
 # depslib dependency file v1.0
-1652618154 source:e:\mine data\projects\codeblocks\lab03\main.cpp
+1652618965 source:e:\mine data\projects\codeblocks\lab03\main.cpp
 	<iostream>
 	<vector>
-	<istream>
+	"histogram.h"
+	"svg.h"
+
+1652618870 e:\mine data\projects\codeblocks\lab03\histogram.h
+	<vector>
+	<iostream>
 	<sstream>
 	<curl/curl.h>
-	<windows.h>
-	"histogram.h"
 	"svg.h"
 
-1652617764 e:\mine data\projects\codeblocks\lab03\histogram.h
-	<vector>
-	<iostream>
-
-1652099635 source:e:\mine data\projects\codeblocks\lab03\histogram.cpp
+1652618870 source:e:\mine data\projects\codeblocks\lab03\histogram.cpp
 	"histogram.h"
 
-1652618435 source:e:\mine data\projects\codeblocks\lab03\svg.cpp
+1652618870 source:e:\mine data\projects\codeblocks\lab03\svg.cpp
 	"svg.h"
 
-1652618464 e:\mine data\projects\codeblocks\lab03\svg.h
+1652618934 e:\mine data\projects\codeblocks\lab03\svg.h
 	<iostream>
 	<vector>
 	<string>
+	<winsock2.h>
 	<windows.h>
 
 1650874104 e:\mine data\projects\codeblocks\lab03\curl\include\curl\curl.h
