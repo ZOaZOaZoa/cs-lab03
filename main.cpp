@@ -41,6 +41,30 @@ Input read_input(istream& in, bool prompt)
     }
     in >> data.bin_count;
 
+    const size_t MAX_TRIES = 100;
+    size_t try_counter = 0;
+    bool passed_test = false;
+    if(prompt)
+    {
+        cerr << "Enter image width: ";
+    }
+    do
+    {
+        in >> data.image_width;
+        passed_test = input_check_histogram_width(data.image_width, number_count);
+
+        if(!passed_test && prompt)
+        {
+            cerr << "Image width should be in range of 70 and 800 and be greater than 1/3 of numbers count multiplyed by 20\n";
+        }
+
+        if(!passed_test && try_counter > MAX_TRIES)
+        {
+            exit(1);
+        }
+        try_counter++;
+    } while(!passed_test);
+
     return data;
 }
 
@@ -93,7 +117,7 @@ int main(int argc, char* argv[])
     }
 
     const auto bins = make_histogramm(input);
-    show_histogramm_svg(bins);
+    show_histogramm_svg(bins, input.image_width);
 
     return 0;
 }

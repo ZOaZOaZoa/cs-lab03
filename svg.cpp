@@ -1,6 +1,18 @@
 #include "svg.h"
 
 
+bool input_check_histogram_width(size_t width, size_t numbers_count)
+{
+    if( (MIN_IMAGE_WIDTH <= width && width <= MAX_IMAGE_WIDTH) && width > MIN_NUMBERS_RATIO * numbers_count * BLOCK_WIDTH)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 void svg_begin(double width, double height)
 {
     cout << "<?xml version = '1.0' encoding='UTF-8'?>\n";
@@ -29,7 +41,7 @@ void svg_end()
     cout << "</svg>\n";
 }
 
-void show_histogramm_svg(const vector<size_t>& bins)
+void show_histogramm_svg(const vector<size_t>& bins, size_t image_width)
 {
     size_t max_bin = bins[0];
     for (size_t bin : bins)
@@ -40,9 +52,9 @@ void show_histogramm_svg(const vector<size_t>& bins)
         }
     }
     auto max_bin_width = BLOCK_WIDTH * max_bin;
-    const auto MAX_BIN_WIDTH = IMAGE_WIDTH - TEXT_WIDTH;
+    const auto MAX_BIN_WIDTH = image_width - TEXT_WIDTH;
 
-    svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
+    svg_begin(image_width, IMAGE_HEIGHT);
 
     double top = 0;
     for(size_t bin : bins)
